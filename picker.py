@@ -1,6 +1,8 @@
 import streamlit as st
 import random
 
+def first(name):
+    return name.split(' ')[0]
 
 # TODO: curl this from somewhere, Gusto or Slack or something?
 # Adjectives from "One Takeaway" https://www.notion.so/streamlit/Q-A-Doc-c2353d2fff984211a8831a8dbe18db80
@@ -32,8 +34,9 @@ people = {
     "Tim Conkling": ["Hacker", "Core Eng"],
 }
 printable = {
-    f"{adj} {name.split(' ')[0]}": role for name, [adj, role] in people.items()
+    first(name): f"{adj} {role}" for name, [adj, role] in people.items()
 }
+shufflable = [f"{first(name)} {adj}" for name, [adj, role] in people.items()]
 
 st.title(f"{len(people)} people work at Streamlit!")
 
@@ -41,14 +44,13 @@ st.sidebar.title("Controls")
 
 with st.beta_container():
     if st.sidebar.button("Pick someone randomly"):
-        random_person = random.choice(list(people.keys()))
+        random_name = random.choice(list(people.keys()))
         st.balloons()
-        firstname = random_person.split(" ")[0]
         adj, role = people[random_person]
-        st.header(f"{firstname}, the {adj} {role}")
+        st.header(f"{first(random_name)}, the {adj} {role}")
 
     if st.sidebar.button("Get a random list of Streamlitians"):
-        shuffled_people = random.sample(list(printable), len(printable))
-        st.write(shuffled_people)
+        random.shuffle(shufflable)
+        shufflable
 
 printable
