@@ -34,9 +34,9 @@ people = {
     "Tim Conkling": ["Hacker", "Core Eng"],
 }
 printable = {
-    first(name): f"{adj} {role}" for name, [adj, role] in people.items()
+    name: f"{adj} {role}" for name, [adj, role] in people.items()
 }
-shufflable = [f"{first(name)} {adj}" for name, [adj, role] in people.items()]
+shufflable = [f"{adj} {first(name)}" for name, [adj, role] in people.items()]
 
 st.title(f"{len(people)} people work at Streamlit!")
 
