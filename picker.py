@@ -3,43 +3,50 @@ import random
 
 
 # TODO: curl this from somewhere, Gusto or Slack or something?
-people = [
-	'Abhi Saini',
-	'Adrien Treuille',
-	'Amanda Kelly',
-	'Amey Deshpande',
-	'Austin Chen',
-	'Brandon Hsiao',
-	'Brandon Williams',
-	'Emiliano Rosso',
-	'Guido Rainuzzo',
-	'Henrikh Kantuni',
-	'James Thompson',
-	'Jonathan Rhone',
-	'Jon Roes',
-	'Ken McGrady Jr',
-	'Matteo Monchiero',
-	'Naomi Most',
-	'Karrie Song',
-	'Randy Zwitch',
-	'Sammy Kauser',
-	'TC Ricks',
-	'Thiago Teixeira',
-	'Tim Conkling'
-]
+# Adjectives from "One Takeaway" https://www.notion.so/streamlit/Q-A-Doc-c2353d2fff984211a8831a8dbe18db80
+people = {
+    "Abhi Saini": ["Focused", "Core PM"],
+    "Adrien Treuille": ["Fearless", "Cofounder & CEO"],
+    "Amanda Kelly": ["Challenger", "Cofounder & CFO"],
+    "Amey Deshpande": ["Brainstorming", "Cloud Eng"],
+    "Austin Chen": ["Immortal", "Core TL"],
+    "Brandon Hsiao": ["Optimistic", "Core Eng"],
+    "Brandon Williams": ["OG", "Cloud Eng"],
+    "Corey Bradford": ["Alcoholic", "Eng Resident"],
+    "Emiliano Rosso": ["Motivated", "Cloud Eng"],
+    "Guido Rainuzzo": ["Enthusiastic", "Cloud Eng"],
+    "Henrikh Kantuni": ["Sleepy", "Core Eng"],
+    "James Thompson": ["Secure", "Cloud PM"],
+    "Jessica Smith": ["Communal", "Marketing"],
+    "Jonathan Rhone": ["Passionate", "Cloud Eng"],
+    "Jon Roes": ["Baby", "VP of Eng"],
+    "Ken McGrady Jr": ["Excited", "Core Eng"],
+    "Matteo Monchiero": ["Fit", "Cloud Eng"],
+    "Naomi Most": ["Growing", "Core TPM"],
+    "Karrie Song": ["Cultural", "Core Eng"],
+    "Marisa Smith": ["Scrappy", "DevRel"],
+    "Randy Zwitch": ["Opportunistic", "Head of DevRel"],
+    "Sammy Kauser": ["Fast", "Exec Assistant"],
+    "TC Ricks": ["Exponential", "Marketing"],
+    "Thiago Teixeira": ["Gelling", "Cofounder & CTO"],
+    "Tim Conkling": ["Hacker", "Core Eng"],
+}
+printable = {
+    f"{adj} {name.split(' ')[0]}": role for name, [adj, role] in people.items()
+}
 
-st.title(f'{len(people)} people work at Streamlit!')
+st.title(f"{len(people)} people work at Streamlit!")
 
-people
-
-st.sidebar.title('Controls')
+st.sidebar.title("Controls")
 
 with st.beta_container():
-	if st.sidebar.button('Pick someone randomly'):
-		random_person = random.choice(people)
-		st.balloons()
-		st.header(random_person)
+    if st.sidebar.button("Pick someone randomly"):
+        random_person = random.choice(list(printable.keys()))
+        st.balloons()
+        st.header(random_person)
 
-	if st.sidebar.button('Get a random list of Streamlitians'):
-		shuffled_people = random.sample(people, len(people))
-		st.write(shuffled_people)
+    if st.sidebar.button("Get a random list of Streamlitians"):
+        shuffled_people = random.sample(list(printable), len(printable))
+        st.write(shuffled_people)
+
+printable
