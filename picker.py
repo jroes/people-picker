@@ -7,7 +7,7 @@ import random
 people = {
     "Abhi Saini": ["Focused", "Core PM"],
     "Adrien Treuille": ["Fearless", "Cofounder & CEO"],
-    "Amanda Kelly": ["Challenger", "Cofounder & CFO"],
+    "Amanda Kelly": ["Challenging", "Cofounder & CFO"],
     "Amey Deshpande": ["Brainstorming", "Cloud Eng"],
     "Austin Chen": ["Immortal", "Core TL"],
     "Brandon Hsiao": ["Optimistic", "Core Eng"],
@@ -17,7 +17,7 @@ people = {
     "Guido Rainuzzo": ["Enthusiastic", "Cloud Eng"],
     "Henrikh Kantuni": ["Sleep-deprived", "Core Eng"],
     "James Thompson": ["Secure", "Cloud PM"],
-    "Jessica Smith": ["Communal", "Marketing"],
+    "Jessica Smith": ["Communal", "Marketer"],
     "Jonathan Rhone": ["Passionate", "Cloud Eng"],
     "Jon Roes": ["Baby", "VP of Eng"],
     "Ken McGrady Jr": ["Excited", "Core Eng"],
@@ -27,7 +27,7 @@ people = {
     "Marisa Smith": ["Scrappy", "DevRel"],
     "Randy Zwitch": ["Opportunistic", "Head of DevRel"],
     "Sammy Kauser": ["Scaling", "Exec Assistant"],
-    "TC Ricks": ["Exponential", "Marketing"],
+    "TC Ricks": ["Exponential", "Marketer"],
     "Thiago Teixeira": ["Gelling", "Cofounder & CTO"],
     "Tim Conkling": ["Hacker", "Core Eng"],
 }
@@ -41,9 +41,11 @@ st.sidebar.title("Controls")
 
 with st.beta_container():
     if st.sidebar.button("Pick someone randomly"):
-        random_person = random.choice(list(printable.keys()))
+        random_person = random.choice(list(people.keys()))
         st.balloons()
-        st.header(random_person)
+        firstname = random_person.split(" ")[0]
+        adj, role = people[random_person]
+        st.header(f"{firstname}, the {adj} {role}")
 
     if st.sidebar.button("Get a random list of Streamlitians"):
         shuffled_people = random.sample(list(printable), len(printable))
