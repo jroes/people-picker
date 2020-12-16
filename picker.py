@@ -46,7 +46,7 @@ with st.beta_container():
     if st.sidebar.button("Pick someone randomly"):
         random_name = random.choice(list(people.keys()))
         st.balloons()
-        adj, role = people[random_person]
+        adj, role = people[random_name]
         st.header(f"{first(random_name)}, the {adj} {role}")
 
     if st.sidebar.button("Get a random list of Streamlitians"):
