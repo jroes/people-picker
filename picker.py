@@ -6,37 +6,38 @@ def first(name):
 
 # TODO: curl this from somewhere, Gusto or Slack or something?
 # Adjectives from "One Takeaway" https://www.notion.so/streamlit/Q-A-Doc-c2353d2fff984211a8831a8dbe18db80
+adjectives = ["Focused", "Fearless", "Challenging", "Brainstorming", "Immortal", "Optimistic", "OG", "Alcoholic", "Motivated", "Enthusiastic", "Sleep-deprived", "Warm-and-fuzzy", "Communal", "Passionate", "Baby", "Excited", "Magical", "Growing", "Cultural", "Scrappy", "Opportunistic", "Scaling", "Exponential", "Gelling", "Hacker"]
 people = {
-    "Abhi Saini": ["Focused", "Core PM"],
-    "Adrien Treuille": ["Fearless", "Cofounder & CEO"],
-    "Amanda Kelly": ["Challenging", "Cofounder & CFO"],
-    "Amey Deshpande": ["Brainstorming", "Cloud Eng"],
-    "Austin Chen": ["Immortal", "Core TL"],
-    "Brandon Hsiao": ["Optimistic", "Core Eng"],
-    "Brandon Williams": ["OG", "Cloud Eng"],
-    "Corey Bradford": ["Alcoholic", "Eng Resident"],
-    "Emiliano Rosso": ["Motivated", "Cloud Eng"],
-    "Guido Rainuzzo": ["Enthusiastic", "Cloud Eng"],
-    "Henrikh Kantuni": ["Sleep-deprived", "Core Eng"],
-    "James Thompson": ["Warm-and-fuzzy", "Cloud PM"],
-    "Jessica Smith": ["Communal", "Marketer"],
-    "Jonathan Rhone": ["Passionate", "Cloud Eng"],
-    "Jon Roes": ["Baby", "VP of Eng"],
-    "Ken McGrady Jr": ["Excited", "Core Eng"],
-    "Matteo Monchiero": ["Magical", "Cloud Eng"],
-    "Naomi Most": ["Growing", "Core TPM"],
-    "Karrie Song": ["Cultural", "Core Eng"],
-    "Marisa Smith": ["Scrappy", "DevRel"],
-    "Randy Zwitch": ["Opportunistic", "Head of DevRel"],
-    "Sammy Kauser": ["Scaling", "Exec Assistant"],
-    "TC Ricks": ["Exponential", "Marketer"],
-    "Thiago Teixeira": ["Gelling", "Cofounder & CTO"],
-    "Tim Conkling": ["Hacker", "Core Eng"],
+    "Abhi Saini": "Core PM",
+    "Adrien Treuille": "Cofounder & CEO",
+    "Amanda Kelly": "Cofounder & COO",
+    "Amey Deshpande": "Cloud Eng",
+    "Austin Chen": "Core TL",
+    "Brandon Hsiao": "Core Eng",
+    "Brandon Williams": "Cloud Eng",
+    "Corey Bradford": "Eng Resident",
+    "Emiliano Rosso": "Cloud Eng",
+    "Guido Rainuzzo": "Cloud Eng",
+    "Henrikh Kantuni": "Core Eng",
+    "James Thompson": "Cloud PM",
+    "Jessica Smith": "Marketer",
+    "Jonathan Rhone": "Cloud Eng",
+    "Jon Roes": "VP of Eng",
+    "Ken McGrady Jr": "Core Eng",
+    "Matteo Monchiero": "Cloud Eng",
+    "Naomi Most": "Core TPM",
+    "Karrie Song": "Core Eng",
+    "Marisa Smith": "DevRel",
+    "Randy Zwitch": "Head of DevRel",
+    "Sammy Kauser": "Exec Assistant",
+    "TC Ricks": "Marketer",
+    "Thiago Teixeira": "Cofounder & Head of Product",
+    "Tim Conkling": "Core Eng"
 }
 printable = {
-    name: f"{adj} {role}" for name, [adj, role] in people.items()
+    name: f"{random.choice(adjectives)} {role}" for name, role in people.items()
 }
-shufflable = [f"{adj} {first(name)}" for name, [adj, role] in people.items()]
+shufflable = [f"{random.choice(adjectives)} {first(name)}" for name, role in people.items()]
 
 st.title(f"{len(people)} people work at Streamlit!")
 
@@ -46,7 +47,7 @@ with st.beta_container():
     if st.sidebar.button("Pick someone randomly"):
         random_name = random.choice(list(people.keys()))
         st.balloons()
-        adj, role = people[random_name]
+        adj, role = random.choice(adjectives), people[random_name]
         st.header(f"{first(random_name)}, the {adj} {role}")
 
     if st.sidebar.button("Get a random list of Streamlitians"):
