@@ -11,6 +11,7 @@ people = {
     "Abhi Saini": "Core PM",
     "Adrien Treuille": "Cofounder & CEO",
     "Amanda Kelly": "Cofounder & COO",
+    "Amanda Walker": "Core Eng",
     "Amey Deshpande": "Cloud Eng",
     "Austin Chen": "Core TL",
     "Brandon Hsiao": "Core Eng",
