@@ -33,7 +33,8 @@ people = {
     "Sammy Kauser": "Exec Assistant",
     "TC Ricks": "Marketer",
     "Thiago Teixeira": "Cofounder & Head of Product",
-    "Tim Conkling": "Core Eng"
+    "Tim Conkling": "Core Eng",
+    "Vincent Donato": "Core Eng"
 }
 printable = {
     name: f"{random.choice(adjectives)} {role}" for name, role in people.items()
