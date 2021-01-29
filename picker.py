@@ -8,38 +8,39 @@ def first(name):
 # Adjectives from "One Takeaway" https://www.notion.so/streamlit/Q-A-Doc-c2353d2fff984211a8831a8dbe18db80
 adjectives = ["Focused", "Fearless", "Challenging", "Brainstorming", "Immortal", "Optimistic", "OG", "Alcoholic", "Motivated", "Enthusiastic", "Sleep-deprived", "Warm-and-fuzzy", "Communal", "Passionate", "Baby", "Excited", "Magical", "Growing", "Cultural", "Scrappy", "Opportunistic", "Scaling", "Exponential", "Gelling", "Hacker"]
 people = {
-    "Abhi Saini": "Core PM",
-    "Adrien Treuille": "Cofounder & CEO",
-    "Amanda Kelly": "Cofounder & COO",
-    "Amanda Walker": "Core Eng",
-    "Amey Deshpande": "Cloud Eng",
-    "Austin Chen": "Core TL",
-    "Brandon Hsiao": "Core Eng",
-    "Brandon Williams": "Cloud Eng",
-    "Corey Bradford": "Eng Resident",
-    "Emiliano Rosso": "Cloud Eng",
-    "Guido Rainuzzo": "Cloud Eng",
-    "Henrikh Kantuni": "Core Eng",
-    "James Thompson": "Cloud PM",
-    "Jessica Smith": "Marketer",
-    "Jonathan Rhone": "Cloud Eng",
-    "Jon Roes": "VP of Eng",
-    "Ken McGrady Jr": "Core Eng",
-    "Matteo Monchiero": "Cloud Eng",
-    "Naomi Most": "Core TPM",
-    "Karrie Song": "Core Eng",
-    "Marisa Smith": "DevRel",
-    "Randy Zwitch": "Head of DevRel",
-    "Sammy Kauser": "Exec Assistant",
-    "TC Ricks": "Marketer",
-    "Thiago Teixeira": "Cofounder & Head of Product",
-    "Tim Conkling": "Core Eng",
-    "Vincent Donato": "Core Eng"
+    "Abhi Saini": { 'role': "Core PM", 'github': "asaini" },
+    "Adrien Treuille": { 'role': "Cofounder & CEO", 'github': "treuille" },
+    "Amanda Kelly": { 'role': "Cofounder & COO", 'github': "kellyamanda" },
+    "Amanda Walker": { 'role': "Core Eng", 'github': "AnOctopus" },
+    "Amey Deshpande": { 'role': "Cloud Eng", 'github': "Amey-D" },
+    "Austin Chen": { 'role': "Core TL", 'github': "akrolsmir" },
+    "Brandon Hsiao": { 'role': "Core Eng", 'github': "bh-streamlit" },
+    "Brandon Williams": { 'role': "Cloud Eng", 'github': "williamsbdev" },
+    "Corey Bradford": { 'role': "Eng Resident", 'github': "cobradford" },
+    "Emiliano Rosso": { 'role': "Cloud Eng", 'github': "arraydude" },
+    "Guido Rainuzzo": { 'role': "Cloud Eng", 'github': "gzzo" },
+    "Henrikh Kantuni": { 'role': "Core Eng", 'github': "kantuni" },
+    "James Thompson": { 'role': "Cloud PM", 'github': "astrojams1" },
+    "Jessica Smith": { 'role': "Marketer", 'github': "" },
+    "Jonathan Rhone": { 'role': "Cloud Eng", 'github': "jrhone" },
+    "Jon Roes": { 'role': "VP of Eng", 'github': "jroes" },
+    "Ken McGrady Jr": { 'role': "Core Eng", 'github': "kmcgrady" },
+    "Matteo Monchiero": { 'role': "Cloud Eng", 'github': "monchier" },
+    "Naomi Most": { 'role': "Core TPM", 'github': "nthmost" },
+    "Karrie Song": { 'role': "Core Eng", 'github': "karriebear" },
+    "Marisa Smith": { 'role': "DevRel", 'github': "mesmith027" },
+    "Randy Zwitch": { 'role': "Head of DevRel", 'github': "randyzwitch" },
+    "Sammy Kauser": { 'role': "Exec Assistant", 'github': "" },
+    "TC Ricks": { 'role': "Marketer", 'github': "tc87" },
+    "Thiago Teixeira": { 'role': "Cofounder & Head of Product", 'github': "tvst" },
+    "Tim Conkling": { 'role': "Core Eng", 'github': "tconkling" },
+    "Vincent Donato": { 'role': "Core Eng", 'github': "vdonato" }
 }
+
 printable = {
-    name: f"{random.choice(adjectives)} {role}" for name, role in people.items()
+    name: f"{random.choice(adjectives)} {details['role']}" for name, details in people.items()
 }
-shufflable = [f"{random.choice(adjectives)} {first(name)}" for name, role in people.items()]
+shufflable = [f"{random.choice(adjectives)} {first(name)}" for name, details in people.items()]
 
 st.title(f"{len(people)} people work at Streamlit!")
 
@@ -49,11 +50,14 @@ with st.beta_container():
     if st.sidebar.button("Pick someone randomly"):
         random_name = random.choice(list(people.keys()))
         st.balloons()
-        adj, role = random.choice(adjectives), people[random_name]
+        adj, role = random.choice(adjectives), people[random_name]['role']
         st.header(f"{first(random_name)}, the {adj} {role}")
 
     if st.sidebar.button("Get a random list of Streamlitians"):
         random.shuffle(shufflable)
         shufflable
+
+    if st.sidebar.button("Get our github ids"):
+        [person['github'] for person in people.values()]
 
 printable
