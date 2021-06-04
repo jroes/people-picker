@@ -40,7 +40,6 @@ printable = {
 }
 shufflable = [f"{random.choice(adjectives)} {first(name)}" for name, details in people.items()]
 
-st.title("Hi Audrey!")
 st.title(f"{len(people)} people work at Streamlit!")
 
 st.sidebar.title("Controls")
