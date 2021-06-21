@@ -35,6 +35,8 @@ people = {
     "Vincent Donato": { 'role': "Core Eng", 'github': "vdonato" }
 }
 
+forcing an error
+
 printable = {
     name: f"{random.choice(adjectives)} {details['role']}" for name, details in people.items()
 }
