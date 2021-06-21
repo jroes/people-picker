@@ -35,8 +35,6 @@ people = {
     "Vincent Donato": { 'role': "Core Eng", 'github': "vdonato" }
 }
 
-forcing an error
-
 printable = {
     name: f"{random.choice(adjectives)} {details['role']}" for name, details in people.items()
 }
@@ -48,6 +46,7 @@ st.sidebar.title("Controls")
 
 with st.beta_container():
     if st.sidebar.button("Pick someone randomly"):
+        a = 5 / 0 # force error
         random_name = random.choice(list(people.keys()))
         st.balloons()
         adj, role = random.choice(adjectives), people[random_name]['role']
