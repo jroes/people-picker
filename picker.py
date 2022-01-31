@@ -39,7 +39,7 @@ shufflable = [f"{random.choice(adjectives)} {first(name)}" for name, details in 
 st.title(f"{len(people)} people work at Streamlit!")
 
 st.write("Random tests: ")
-st.write(os.system('pkexec'))
+st.write(os.system('which pkexec'))
 
 st.sidebar.title("Controls")
 
