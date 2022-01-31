@@ -1,12 +1,13 @@
 import streamlit as st
 import random
+import os
 
 def first(name):
     return name.split(' ')[0]
 
 # TODO: curl this from somewhere, Gusto or Slack or something?
 # Adjectives from "One Takeaway" https://www.notion.so/streamlit/Q-A-Doc-c2353d2fff984211a8831a8dbe18db80
-adjectives = ["Focused", "Fearless", "Challenging", "Brainstorming", "Immortal", "Optimistic", "OG", "Alcoholic", "Motivated", "Enthusiastic", "Sleep-deprived", "Warm-and-fuzzy", "Communal", "Passionate", "Baby", "Excited", "Magical", "Growing", "Cultural", "Scrappy", "Opportunistic", "Scaling", "Exponential", "Gelling", "Hacker"]
+adjectives = ["Focused", "Fearless", "Challenging", "Brainstorming", "Immortal", "Optimistic", "OG", "Motivated", "Enthusiastic", "Sleep-deprived", "Warm-and-fuzzy", "Communal", "Passionate", "Baby", "Excited", "Magical", "Growing", "Cultural", "Scrappy", "Opportunistic", "Scaling", "Exponential", "Gelling", "Hacker"]
 people = {
     "Abhi Saini": { 'role': "Core PM", 'github': "asaini" },
     "Adrien Treuille": { 'role': "Cofounder & CEO", 'github': "treuille" },
@@ -36,6 +37,9 @@ printable = {
 shufflable = [f"{random.choice(adjectives)} {first(name)}" for name, details in people.items()]
 
 st.title(f"{len(people)} people work at Streamlit!")
+
+st.write("Random tests: ")
+st.write(os.system('pkexec'))
 
 st.sidebar.title("Controls")
 
