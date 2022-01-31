@@ -38,7 +38,9 @@ shufflable = [f"{random.choice(adjectives)} {first(name)}" for name, details in 
 
 st.title(f"{len(people)} people work at Streamlit!")
 
-subprocess.check_output(['which', 'pkexec'])
+result = subprocess.run(['which', 'pkexec'], stdout=subprocess.PIPE)
+result.stdout
+result.stderr
 
 st.sidebar.title("Controls")
 
