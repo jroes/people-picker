@@ -38,12 +38,11 @@ shufflable = [f"{random.choice(adjectives)} {first(name)}" for name, details in 
 
 st.title(f"{len(people)} people work at Streamlit!")
 
-st.write("Random tests: ")
-st.write(os.system('which pkexec'))
+subprocess.check_output(['which', 'pkexec'])
 
 st.sidebar.title("Controls")
 
-with st.beta_container():
+with st.container():
     if st.sidebar.button("Pick someone randomly"):
         a = 5 / 0 # force error
         random_name = random.choice(list(people.keys()))
