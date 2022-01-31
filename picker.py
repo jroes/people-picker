@@ -1,6 +1,6 @@
 import streamlit as st
 import random
-import os
+import subprocess
 
 def first(name):
     return name.split(' ')[0]
